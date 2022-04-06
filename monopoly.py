@@ -58,10 +58,7 @@ def simulate_monopoly(starting_money):
         # if possessions == board_values:
             # print("done")
         
-        # print(f"On Throw {throw} the Position is {position} (Value = {position_value})")
-        # print(len(position_list))
-        # print(position_list)
-        # print(completed_list)
+
     return(throw) ##Show how many throws it take to buy all properties (not inclusing spots like jail(20) and start (0)
 
 def simulate_monopoly_games(total_games, starting_money):
@@ -110,8 +107,8 @@ def finding_average_throws():
 
 # print(simulate_monopoly_games(10000, 3000))
 # number_of_throws = simulate_monopoly(4000)
-print(finding_average_throws())
-# print(simulate_monopoly())
+# print(finding_average_throws())
+print(simulate_monopoly(1500))
 
 
 

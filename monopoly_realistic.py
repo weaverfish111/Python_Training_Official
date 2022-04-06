@@ -27,69 +27,63 @@ def simulate_monopoly(starting_money_p1, starting_money_p2):
     position_p1 = 0
     position_p2 = 0
     positions = [0, 0]
-    # starting_money_1 = 1500
-    # starting_money_2 = 1500
+    possession_count_p1 = 0
+    possession_count_p2 = 0
     properties_left = 28
-
     board_values = [0, 60, 0, 60, 0, 200, 100, 0, 100, 120, 0, 140, 150, 140, 160, 200, 180,
                     0, 180, 200, 0, 220, 0, 220, 240, 200, 260, 260, 150, 280, 0, 300, 300,
                     0, 320, 200, 0, 350, 0, 400]
     possessions_p1 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ]
     possessions_p2 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ]
 
-    # completed_list = list(range(40))    
-
-    ## While looped actioning simulation
+    ## While loop actioning Monopoly Simulation
     while properties_left != 0: 
+        ## Throwing dice and recording postions of two players
         throw += 1
-        
         position_p1 += throw_two_dice()
         position_p2 += throw_two_dice()
         positions[0] = position_p1
         positions[1] = position_p2
-        print(positions)
-        # print(position_p2)
-        ## If function for going past 'GO' (if over 40 minus 40)
+        
+        ## If function for players going past 'GO' (if over 40 minus 40)
+        # Player 1
         if position_p1 >= 40:
             starting_money_p1 += 200
             position_p1 = position_p1 - 40
-
+        
+        # Player 2
         if position_p2 >= 40:
             starting_money_p2 += 200
             position_p2 = position_p2 - 40
-        
-        ## If function for landing on position (buy or carry on)
-        if board_values[position_p1] > 0 and possessions_p1[position_p1] == 0 and starting_money_p1 > board_values[position_p1] and possessions not in :
+
+        ## If function for players landing on position (purchase or continue), counting possessions for each player
+        # Player 1
+        if board_values[position_p1] > 0 and possessions_p1[position_p1] == 0 and starting_money_p1 > board_values[position_p1] and possessions_p2[position_p1] == 0:
             possessions_p1[position_p1] = board_values[position_p1]
             starting_money_p1 -= board_values[position_p1]
-            # print("Property Bought!")
+            print("Property Bought P1!")
+            possession_count_p1 += 1
             properties_left -= 1
 
-        if board_values[position_p2] > 0 and possessions_p2[position_p2] == 0 and starting_money_p2 > board_values[position_p2]:
+        # Player 2
+        if board_values[position_p2] > 0 and possessions_p2[position_p2] == 0 and starting_money_p2 > board_values[position_p2] and possessions_p1[position_p2] == 0: 
             possessions_p2[position_p2] = board_values[position_p2]
             starting_money_p2 -= board_values[position_p2]
-            # print("Property Bought!")
+            print("Property Bought P2!")
+            possession_count_p2 += 1
             properties_left -= 1
 
+        ### The Debugging Section!!
+        # print(positions)
+        # print(starting_money_p1)
+        # print(starting_money_p2)
+        print(possessions_p1)
+        print(possessions_p2)
+        print(possession_count_p1)
+        print(possession_count_p2)
 
-            print(starting_money_p1)
-            print(starting_money_p2)
-            print(possessions_p1)
-            print(possessions_p2)
-
-
-            # print(f"Number of properties left = {properties_left}")
-
-        # if possessions == board_values:
-            # print("done")
-        
-        # print(f"On Throw {throw} the Position is {position} (Value = {position_value})")
-        # print(len(position_list))
-        # print(position_list)
-        # print(completed_list)
-        
-        # delta = possession_count_p1 - possession_count_p2      ## Delta is the advantage of P1 vs P2
-    return()
+        delta = possession_count_p1 - possession_count_p2      ## Delta is the advantage of P1 vs P2
+    return(delta)
 
 def simulate_monopoly_games(total_games, starting_money):
     number_of_throws_for_completion = []
@@ -109,7 +103,6 @@ def simulate_monopoly_games(total_games, starting_money):
     # plt.text(average_throws, max,max)
     # plt.show()
     return(average_throws)
-
 
 def finding_average_throws():
     average_num_throws_list = []
@@ -131,6 +124,9 @@ def finding_average_throws():
     plt.show()
     return()
 
+def equilibrium():
+    for starting_money_p2
+    simulate_monopoly_games(total_games, starting_money_p1, starting_money_p2)
 
 
 ### DRIVER CODE
