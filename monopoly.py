@@ -1,7 +1,6 @@
 ## Monopoly.py
 ## Richard Weaver
 ## 18/03/2022
-## Poocas
 
 
 import random
