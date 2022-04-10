@@ -72,12 +72,12 @@ def simulate_monopoly_games(total_games, starting_money):
     average_throws = total_throws / total_games
 
     ## Histogram Graph showing Number of Turns
-    # plt.hist(number_of_throws_for_completion)
-    # plt.title(f'Histogram showing Number of Turns taken in {total_games} Games of Monopoly')
-    # plt.xlabel('Number Of Turns Taken')
-    # plt.ylabel('Number of Games')
-    # plt.text(average_throws, max,max)
-    # plt.show()
+    plt.hist(number_of_throws_for_completion)
+    plt.title(f'Histogram showing Number of Turns taken in {total_games} Games of Monopoly')
+    plt.xlabel('Number Of Turns Taken')
+    plt.ylabel('Number of Games')
+    plt.text(average_throws, max,max)
+    plt.show()
     return(average_throws)
 
 
@@ -105,10 +105,10 @@ def finding_average_throws():
 
 ### DRIVER CODE
 
-# print(simulate_monopoly_games(10000, 3000))
+print(simulate_monopoly_games(10000, 1500))
 # number_of_throws = simulate_monopoly(4000)
 # print(finding_average_throws())
-print(simulate_monopoly(1500))
+# print(simulate_monopoly(1500))
 
 
 

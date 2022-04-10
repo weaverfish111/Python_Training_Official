@@ -5,9 +5,9 @@
 
 import random
 import matplotlib.pyplot as plt	
+import numpy as np
 
-from turtle import position
-
+## Function simulating the rolling of two dice 
 def throw_two_dice():
     double = 0
     min_val = 1
@@ -15,14 +15,14 @@ def throw_two_dice():
     dice_1 = random.randint(min_val, max_val)
     dice_2 = random.randint(min_val, max_val)
     roll = dice_1 + dice_2
-    # print(f"throw = {roll}")
-    # print(f"The Total Value of the Dice Roll Was {roll}")
     if dice_1 == dice_2:
         # print("A Double Has Been Thrown!")
         double = 1
     return(roll)
 
+## Function simulating a single game of Monopoly
 def simulate_monopoly(starting_money_p1, starting_money_p2):
+    ## Setting Variables
     throw = 0
     position_p1 = 0
     position_p2 = 0
@@ -36,7 +36,7 @@ def simulate_monopoly(starting_money_p1, starting_money_p2):
     possessions_p1 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ]
     possessions_p2 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ]
 
-    ## While loop actioning Monopoly Simulation
+    ## While Loop actioning the Simulation
     while properties_left != 0: 
         ## Throwing dice and recording postions of two players
         throw += 1
@@ -61,7 +61,6 @@ def simulate_monopoly(starting_money_p1, starting_money_p2):
         if board_values[position_p1] > 0 and possessions_p1[position_p1] == 0 and starting_money_p1 > board_values[position_p1] and possessions_p2[position_p1] == 0:
             possessions_p1[position_p1] = board_values[position_p1]
             starting_money_p1 -= board_values[position_p1]
-            print("Property Bought P1!")
             possession_count_p1 += 1
             properties_left -= 1
 
@@ -69,41 +68,43 @@ def simulate_monopoly(starting_money_p1, starting_money_p2):
         if board_values[position_p2] > 0 and possessions_p2[position_p2] == 0 and starting_money_p2 > board_values[position_p2] and possessions_p1[position_p2] == 0: 
             possessions_p2[position_p2] = board_values[position_p2]
             starting_money_p2 -= board_values[position_p2]
-            print("Property Bought P2!")
             possession_count_p2 += 1
             properties_left -= 1
 
-        ### The Debugging Section!!
-        # print(positions)
-        # print(starting_money_p1)
-        # print(starting_money_p2)
-        print(possessions_p1)
-        print(possessions_p2)
-        print(possession_count_p1)
-        print(possession_count_p2)
-
-        delta = possession_count_p1 - possession_count_p2      ## Delta is the advantage of P1 vs P2
+    ## Delta is the advantage of P1 vs P2
+    delta = possession_count_p1 - possession_count_p2     
+    # print(f"After this game player 1 had {delta} more streets than player 2.")
     return(delta)
 
-def simulate_monopoly_games(total_games, starting_money):
-    number_of_throws_for_completion = []
-    total_throws = 0
+## Function simulating numerous games of monopoly to return average delta value for total games
+def simulate_monopoly_games(total_games, starting_money_p1, starting_money_p2):
+    # number_of_throws_for_completion = []
+    # starting_money_p1 = starting_money
+    # starting_money_p2 = starting_money
+    # total_throws = 0
+    total_delta = 0
     for game in range(0, total_games):
-        number_of_throws = simulate_monopoly(starting_money)
-        number_of_throws_for_completion.append(number_of_throws)
-        number_of_throws_for_completion.sort()
-        total_throws += number_of_throws 
-    average_throws = total_throws / total_games
+        total_delta  += simulate_monopoly(starting_money_p1, starting_money_p2)
+    average_delta = total_delta / total_games
+    
+## Code working out how many Turns it takes to complete the Game of Monopoly!
+    #     number_of_throws = simulate_monopoly(starting_money_p1, starting_money_p2)
+    #     number_of_throws_for_completion.append(number_of_throws)
+    #     number_of_throws_for_completion.sort()
+    #     total_throws += number_of_throws 
+    # average_throws = total_throws / total_games
+    # print(f"Monopoly simulator: two players, {starting_money_p1} euro starting money, {total_games} games On average player 1 has {average_delta} more streets in their possession when all streets have been bought")
 
-## Histogram Graph showing Number of Turns
+## Histogram Graph showing Number of Turns needed to complete Game of Monopoly
     # plt.hist(number_of_throws_for_completion)
     # plt.title(f'Histogram showing Number of Turns taken in {total_games} Games of Monopoly')
     # plt.xlabel('Number Of Turns Taken')
     # plt.ylabel('Number of Games')
     # plt.text(average_throws, max,max)
     # plt.show()
-    return(average_throws)
+    return(average_delta)
 
+## Function calculating average number of throws to complete monopoly games
 def finding_average_throws():
     average_num_throws_list = []
     starting_money_list = []
@@ -120,18 +121,40 @@ def finding_average_throws():
     plt.title(f'Histogram showing Average Number of Turns taken in Games of Monopoly')
     plt.xlabel('Starting Money')
     plt.ylabel('Average Number of Throws')
-    # plt.text(average_throws, max,max)
     plt.show()
     return()
 
+## Function calculating how to resolve disadvantage of P2 being second dice roller to P1
 def equilibrium():
-    for starting_money_p2
-    simulate_monopoly_games(total_games, starting_money_p1, starting_money_p2)
+    total_games = 10000
+    starting_money_p1 = 1500
+    starting_money_p2 = 1500
+    extra_monies = range(1500,1701, 50)
+    delta_list = []
+    extra_money_list = []
+    ## For Loop varying starting money of P2
+    for starting_money_p2 in extra_monies:
+        starting_money = [starting_money_p1, starting_money_p2]
+        delta_difference = simulate_monopoly_games(total_games, starting_money_p1, starting_money_p2)
+        extra_money_count = starting_money_p2 - starting_money_p1
+        delta_list.append(delta_difference)
+        extra_money_list.append(extra_money_count)
+        print(f"Starting money {starting_money}: player 1 on average {delta_difference} more streets (player 2 - {extra_money_count} euros extra)")
 
+## Graph Plotting Delta Difference between two players
+    x = extra_money_list
+    y = delta_list
+    plt.plot(x, y, 'r-')
+    plt.axhline(0)
+    plt.title(f'Graph Plotting Varying Disadvantage of Player 2 in Games of Monopoly')
+    plt.xlabel('Amount of Extra Money for P2')
+    plt.ylabel('Delta Difference between P1 and P2')
+    plt.show()
+    return()
 
-### DRIVER CODE
-
-# print(simulate_monopoly_games(1, 3000))
-# number_of_throws = simulate_monopoly(4000)
+### DRIVER CODE:
+print(equilibrium())
+# print(simulate_monopoly_games(10000, 1500, 1600))   ### Total Games, Starting Money
+# number_of_throws = simulate_monopoly(4000)    
 # print(finding_average_throws())
-print(simulate_monopoly(1500, 1500))
+# print(simulate_monopoly(1500, 1500))   ### Starting Money P1, Starting Money P2
