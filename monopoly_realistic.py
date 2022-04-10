@@ -1,7 +1,7 @@
 ## Monopoly.py
 ## Richard Weaver
 ## 18/03/2022
-!
+
 
 import random
 import matplotlib.pyplot as plt	
@@ -153,8 +153,11 @@ def equilibrium():
     return()
 
 ### DRIVER CODE:
-print(equilibrium())
+# print(equilibrium())
 # print(simulate_monopoly_games(10000, 1500, 1600))   ### Total Games, Starting Money
 # number_of_throws = simulate_monopoly(4000)    
 # print(finding_average_throws())
 # print(simulate_monopoly(1500, 1500))   ### Starting Money P1, Starting Money P2
+
+print("Monopoly simulator: 2 players")
+print("On average, if player 2 receives 100 euros more starting money, both players collect an equal number of streets")
