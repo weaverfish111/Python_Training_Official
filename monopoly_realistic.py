@@ -126,7 +126,7 @@ def finding_average_throws():
 
 ## Function calculating how to resolve disadvantage of P2 being second dice roller to P1
 def equilibrium():
-    total_games = 10000
+    total_games = 50000
     starting_money_p1 = 1500
     starting_money_p2 = 1500
     extra_monies = range(1500,1701, 50)
@@ -144,7 +144,7 @@ def equilibrium():
 ## Graph Plotting Delta Difference between two players
     x = extra_money_list
     y = delta_list
-    plt.plot(x, y, 'r-')
+    plt.plot(x, y, 'b-')
     plt.axhline(0)
     plt.title(f'Graph Plotting Varying Disadvantage of Player 2 in Games of Monopoly')
     plt.xlabel('Amount of Extra Money for P2')
@@ -153,11 +153,11 @@ def equilibrium():
     return()
 
 ### DRIVER CODE:
-# print(equilibrium())
+print(equilibrium())
 # print(simulate_monopoly_games(10000, 1500, 1600))   ### Total Games, Starting Money
 # number_of_throws = simulate_monopoly(4000)    
 # print(finding_average_throws())
 # print(simulate_monopoly(1500, 1500))   ### Starting Money P1, Starting Money P2
 
-print("Monopoly simulator: 2 players")
-print("On average, if player 2 receives 100 euros more starting money, both players collect an equal number of streets")
+# print("Monopoly simulator: 2 players")
+# print("On average, if player 2 receives 100 euros more starting money, both players collect an equal number of streets")
