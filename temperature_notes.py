@@ -5,7 +5,7 @@
 def read_file(File):
     open_file = open(File)
     data = open_file.read().splitlines()
-    open_file.close()
+    # open_file.close()
     without_spaces = []
     for line in data:
         without_spaces.append(line.replace(" ", ""))
