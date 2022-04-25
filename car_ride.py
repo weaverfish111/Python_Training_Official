@@ -10,7 +10,7 @@ data_list = []
 ## Create overall list variable for each Car_Data
 # Person online says use 'with' statement to open and process file to iterate over data (more subjective) [https://peps.python.org/pep-0343/].
 with open("CarRideData.csv") as car_data:
-     data_list = car_data.read().splitlines()
+    data_list = car_data.read().splitlines()
 data_list.pop(0)
 print(data_list[0]) 
 
