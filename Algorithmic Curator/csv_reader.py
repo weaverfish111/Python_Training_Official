@@ -1,6 +1,13 @@
 import pandas as pd
-pd.set_option('display_max_rows', 1000)
-datafile = pd.read_csv(data_data.csv)
+datafile = pd.read_csv("data_data.csv")
+datafile.dropna([3], inplace = True)
 
 
-https://raw.githubusercontent.com/NationalGalleryOfArt/opendata/main/data/objects.csv
+# pd.options.display.max_rows = 1000
+# print(pd.options.display.max_rows)
+print(datafile.info())
+
+print(datafile)
+
+
+# https://raw.githubusercontent.com/NationalGalleryOfArt/opendata/main/data/objects.csv
